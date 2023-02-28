@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.junit.jupiter.Container;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,9 +16,12 @@ class DemoApplicationTests {
 
     static final int DEVAPPPORT = 8080;
     static final int PRODAPPPORT = 8081;
-    static final GenericContainer<?> devapp = new GenericContainer<>("docker.io/library/devapp1")
+
+    @Container
+    static final GenericContainer<?> devapp = new GenericContainer<>("devapp1")
             .withExposedPorts(DEVAPPPORT);
-    static final GenericContainer<?> prodapp = new GenericContainer<>("docker.io/library/prodapp1")
+    @Container
+    static final GenericContainer<?> prodapp = new GenericContainer<>("prodapp1")
             .withExposedPorts(PRODAPPPORT);
     @Autowired
     TestRestTemplate restTemplate;
