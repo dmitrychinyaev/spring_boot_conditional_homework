@@ -17,10 +17,9 @@ class DemoApplicationTests {
     static final int DEVAPPPORT = 8080;
     static final int PRODAPPPORT = 8081;
 
-    @Container
     static final GenericContainer<?> devapp = new GenericContainer<>("devapp1")
             .withExposedPorts(DEVAPPPORT);
-    @Container
+
     static final GenericContainer<?> prodapp = new GenericContainer<>("prodapp1")
             .withExposedPorts(PRODAPPPORT);
     @Autowired
